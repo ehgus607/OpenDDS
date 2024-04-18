@@ -263,10 +263,14 @@ GuidGenerator::populate(DCPS::GUID_t &container)
 
   const ACE_UINT16 count = getCount();
   ACE_OS::memcpy(&container.guidPrefix[2], node_id_, NODE_ID_SIZE);
-  container.guidPrefix[8] = static_cast<CORBA::Octet>(pid_ >> 8);
-  container.guidPrefix[9] = static_cast<CORBA::Octet>(pid_ & 0xFF);
-  container.guidPrefix[10] = static_cast<CORBA::Octet>(count >> 8);
-  container.guidPrefix[11] = static_cast<CORBA::Octet>(count & 0xFF);
+  container.guidPrefix[8] = static_cast<CORBA::Octet>(0);
+  container.guidPrefix[9] = static_cast<CORBA::Octet>(0);
+  container.guidPrefix[10] = static_cast<CORBA::Octet>(0);
+  container.guidPrefix[11] = static_cast<CORBA::Octet>(0);
+  // container.guidPrefix[8] = static_cast<CORBA::Octet>(pid_ >> 8);
+  // container.guidPrefix[9] = static_cast<CORBA::Octet>(pid_ & 0xFF);
+  // container.guidPrefix[10] = static_cast<CORBA::Octet>(count >> 8);
+  // container.guidPrefix[11] = static_cast<CORBA::Octet>(count & 0xFF);
 }
 
 } // namespace RTPS

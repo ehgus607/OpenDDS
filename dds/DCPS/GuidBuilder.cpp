@@ -20,7 +20,8 @@ fill_guid(CORBA::Octet* begin, long value, std::size_t len)
 {
   for (std::size_t i = 0; i < len; ++i) {
     size_t shift = (len - i - 1) << 3;
-    begin[i] = static_cast<CORBA::Octet>(0xff & (value >> shift));
+    // begin[i] = static_cast<CORBA::Octet>(0xff & (value >> shift));
+    begin[i] = 0;
   }
 }
 
@@ -71,19 +72,22 @@ GuidBuilder::create()
 void
 GuidBuilder::guidPrefix0(long p0)
 {
-  fill_guid(guid_.guidPrefix, p0, 4);
+  // fill_guid(guid_.guidPrefix, p0, 4);
+  guid_.guidPrefix[0] = static_cast<CORBA::Octet>(0);
 }
 
 void
 GuidBuilder::guidPrefix1(long p1)
 {
-  fill_guid(guid_.guidPrefix + 4, p1, 4);
+  // fill_guid(guid_.guidPrefix + 4, p1, 4);
+  guid_.guidPrefix[1] = static_cast<CORBA::Octet>(0);
 }
 
 void
 GuidBuilder::guidPrefix2(long p2)
 {
-  fill_guid(guid_.guidPrefix + 8, p2, 4);
+  // fill_guid(guid_.guidPrefix + 8, p2, 4);
+  guid_.guidPrefix[2] = static_cast<CORBA::Octet>(0);
 }
 
 void
